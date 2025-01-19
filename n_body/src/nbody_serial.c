@@ -23,7 +23,7 @@ void simulate_serial(Body *bodies, int n, int steps) {
                 Body *body_j = &bodies[j];
 
                 // Compute distance squared.
-                double dist_sq = calculate_distance(body_j, body_i);
+                double dist_sq = calculate_distance(*body_j, *body_i);
                 double r = sqrt(dist_sq);
 
                 // Compute gravitational force.
