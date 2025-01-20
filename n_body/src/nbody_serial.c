@@ -62,6 +62,8 @@ void simulate_serial(Body *bodies, int n, int steps) {
             body_i->x += body_i->vx * DT;
             body_i->y += body_i->vy * DT;
             body_i->z += body_i->vz * DT;
+
+            // printf("x: %d, y: %d, z: %d\n", body_i->x, body_i->y, body_i->z);
         }
     }
 

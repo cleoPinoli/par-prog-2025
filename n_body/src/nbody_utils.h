@@ -5,7 +5,8 @@
 #define G 6.67430e-11   // Gravitational constant
 #define DT 0.01         // Time step
 #define EPS 1e-9        // Softening factor to avoid singularities
-#define MASS 1.899e12   //  for m.
+#define MASS 5.972e24   //  for m.
+#define BOUND 10000     // Max limit for x, y, z.
 
 
 typedef struct {
