@@ -21,4 +21,6 @@ double calculate_distance(Body a, Body b);
 void simulate_serial(Body *bodies, int n, int steps);
 void simulate_parallel(Body *bodies, int n, int steps, int rank, int size);
 
+void write_position(Body *body);
+
 #endif

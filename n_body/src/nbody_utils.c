@@ -24,3 +24,19 @@ void initialize_bodies(Body *bodies, int n) {
 double calculate_distance(Body a, Body b) {
     return (a.x - b.x) * (a.x - b.x) + (a.y - b.y) * (a.y - b.y) + (a.z - b.z) * (a.z - b.z);
 }
+
+
+// Not working with big amour of positions to write.
+void write_position(Body *body) {
+    FILE *file = fopen("../positions.txt", "a");
+
+    if (file == NULL) {
+        printf("Error opening file!\n");
+        return;
+    }
+
+    fprintf(file, "%.4f, %.4f, %.4f\n", body->x, body->y, body->z);
+    fflush(file);
+
+    // fclose(file);
+}
