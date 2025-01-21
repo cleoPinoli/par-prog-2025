@@ -14,7 +14,7 @@ void initialize_bodies(Body *bodies, int n) {
         bodies[i].y = ((float)rand() / RAND_MAX) * BOUND;
         bodies[i].z = ((float)rand() / RAND_MAX) * BOUND;
         bodies[i].vx = bodies[i].vy = bodies[i].vz = 0.0;
-        bodies[i].mass = MASS;
+        bodies[i].mass = 1e14 + ((float)rand() / RAND_MAX) * (1e20 - 1e16);
 
         // printf("x: %f, y: %f, z: %f\n", bodies[i].x, bodies[i].y, bodies[i].z);
     }

@@ -5,7 +5,7 @@ mpicc -o nbody main.c nbody_serial.c nbody_parallel.c nbody_utils.c -lm;
 chmod +x nbody;
 
 # Serial exection with 1.000 bodies in 1.000 steps.
-./nbody 500 500;
+./nbody 100 1000;
 
 # Parallel exection using 4 processes.
-# mpiexec -n 4 ./nbody 1000 1000;
+# mpiexec -n 4 ./nbody 100 1000;
