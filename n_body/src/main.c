@@ -38,7 +38,13 @@ int main(int argc, char **argv) {
     Body *bodies = (Body*)malloc(n * sizeof(Body));
     initialize_bodies(bodies, n);
 
-    if (size == 1) {
+    if (argc == 4) {
+        // Octtree implementation.
+        start_time = MPI_Wtime();
+        simulate_octtree(bodies, n, steps);
+        end_time = MPI_Wtime();
+
+    } else if (size == 1) {
         // Serial execution.
         start_time = MPI_Wtime();
         simulate_serial(bodies, n, steps);
