@@ -5,6 +5,7 @@
 
 
 void simulate_serial(Body *bodies, int n, int steps) {
+    
     FILE *file = fopen("../positions.txt", "a");
 
     if (file == NULL) {
@@ -68,8 +69,6 @@ void simulate_serial(Body *bodies, int n, int steps) {
             body_i->x += body_i->vx * DT;
             body_i->y += body_i->vy * DT;
             body_i->z += body_i->vz * DT;
-
-            // write_position(body_i);
             
             fprintf(file, "%.4f, %.4f, %.4f\n", body_i->x, body_i->y, body_i->z);
             fflush(file);

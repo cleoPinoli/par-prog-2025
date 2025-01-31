@@ -133,12 +133,15 @@ void free_octree(OctreeNode *node) {
 
 
 void simulate_octtree(Body *bodies, int n, int steps) {
+
+    /*
     FILE *file = fopen("../positions.txt", "a");
 
     if (file == NULL) {
         printf("Error opening file!\n");
         return;
     }
+    */
 
     double root_half_size = BOUND / 2;
     double root_center[DIM] = {root_half_size, root_half_size, root_half_size}; // Center of the cube.
@@ -152,12 +155,14 @@ void simulate_octtree(Body *bodies, int n, int steps) {
    for (int step = 0; step < steps; step++) {
         update_body(bodies, n, root);
 
+        /*
         for (int i = 0; i < n; i++) {
             fprintf(file, "%.4f, %.4f, %.4f\n", bodies[i].x, bodies[i].y, bodies[i].z);
             fflush(file);
         }
+        */
     }
 
     free_octree(root);
-    fclose(file);
+    // fclose(file);
 }

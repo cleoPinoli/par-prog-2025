@@ -7,6 +7,7 @@
 
 void simulate_parallel(Body *bodies, int n, int steps, int rank, int size) {
     
+    /*
     FILE *file;
 
     if (rank == 0) {
@@ -17,6 +18,7 @@ void simulate_parallel(Body *bodies, int n, int steps, int rank, int size) {
             return;
         }
     }
+    */
 
     int chunk_size = n / size;
     int start = rank * chunk_size;
@@ -52,13 +54,15 @@ void simulate_parallel(Body *bodies, int n, int steps, int rank, int size) {
         MPI_Allgather(MPI_IN_PLACE, chunk_size * sizeof(Body), MPI_BYTE,
                       bodies, chunk_size * sizeof(Body), MPI_BYTE, MPI_COMM_WORLD);
 
+        /*
         if (rank == 0) {
             for (int i = 0; i < n; i++) {
                 fprintf(file, "%.4f, %.4f, %.4f\n", bodies[i].x, bodies[i].y, bodies[i].z);
                 fflush(file);
             }
         }
+        */
     }
 
-    if (rank == 0) fclose(file);
+    // if (rank == 0) fclose(file);
 }

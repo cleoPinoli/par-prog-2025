@@ -6,8 +6,9 @@
 #include <time.h>
 
 
-void initialize_bodies(Body *bodies, int n) {
-    srand(time(NULL));
+void initialize_bodies(Body *bodies, int n, int rank) {
+    // Rank + 1 to avoid the process 0 to set the seed equal to 0.
+    srand(time(NULL) * (rank + 1));
 
     for (int i = 0; i < n; i++) {
         bodies[i].x = ((float)rand() / RAND_MAX) * BOUND;

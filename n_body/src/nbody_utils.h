@@ -17,11 +17,12 @@ typedef struct {
 } Body;
 
 
-void initialize_bodies(Body *bodies, int n);
+void initialize_bodies(Body *bodies, int n, int rank);
 double calculate_distance(Body a, Body b);
 void simulate_serial(Body *bodies, int n, int steps);
 void simulate_parallel(Body *bodies, int n, int steps, int rank, int size);
 void simulate_octtree(Body *bodies, int n, int steps);
+// void simulate_par_octtree(Body *bodies, int n, int steps, int rank, int size);
 
 
 typedef struct OctreeNode {
