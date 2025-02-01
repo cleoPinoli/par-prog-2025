@@ -57,12 +57,16 @@ int main(int argc, char **argv) {
                bodies, chunk_size * sizeof(Body), MPI_BYTE,
                0, MPI_COMM_WORLD);
 
+    // Wait till all the processes arrive at this point.
+    MPI_Barrier(MPI_COMM_WORLD);
+
+    if (rank == 0) {
+        end_time_bodies = MPI_Wtime();
+        printf("Rank: %d, time for bodies generation: %.4f seconds.\n", rank, end_time_bodies - start_time_bodies);
+    }
+
     // Root send the created bodies by the processes to all the processes. 
     MPI_Bcast(bodies, n * sizeof(Body), MPI_BYTE, 0, MPI_COMM_WORLD);
-
-    end_time_bodies = MPI_Wtime();
-    printf("Rank: %d, time for bodies generation: %.4f seconds.\n", rank, end_time_bodies - start_time_bodies);
-
 
     if (argc >= 4) {
         // Octtree implementation.
